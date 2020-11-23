@@ -31,33 +31,17 @@
 <body><div id="header" class="header" align="center">
 <h1>4D Human Body Capture from Egocentric Video  <br />via 3D Scene Grounding</h1>
 
-<!-- <table style="width:90%">
-  <tbody><tr>
-    <td style="text-align:center"><font size="4"><a href="https://aptx4869lm.github.io/">Miao Liu</a> </font></td>
-    <td style="text-align:center"><font size="4">Dexin Yang </font></td>
-    <td style="text-align:center"><font size="4"><a href="https://vlg.inf.ethz.ch/people.html">Siyu Tang</a> </font></td>
-    <td style="text-align:center"><font size="4"><a href="https://www.biostat.wisc.edu/~yli/">Yin Li</a> </td>
-    <td style="text-align:center"><font size="4"><a href="https://rehg.org/">James Rehg</a></td>
-  </tr>
-  <tr>
-  <td style="text-align:center">Georgia Institute of Technology</td> 
-  <td style="text-align:center">ETH Z<sann>&#252</span>rich</td>
-  <td style="text-align:center">University of Wisconsin<span>&#8722;</span>Madison</td> 
-  <td style="text-align:center">Georgia Institue of Technology</td> 
-  </tr>
-</tbody></table> -->
-
-<table style="width:90%">
+<table style="width:100%">
   <tbody><tr>
     <td style="text-align:center"><font size="4"><a href="https://aptx4869lm.github.io/">Miao Liu</a><sup>1</sup> </font></td>
     <td style="text-align:center"><font size="4">Dexin Yang</font><sup>2</sup> </td>
     <td style="text-align:center"><font size="4"><a href="https://yz-cnsdqz.github.io">Yan Zhang</a><sup>2</sup> </td>    
     <td style="text-align:center"><font size="4"><a href="https://zhpcui.github.io">Zhaopeng Cui</a><sup>3</sup> </td>
-    <td style="text-align:center"><font size="4"><a href="https://rehg.org/">James Rehg</a><sup>1</sup></td>
+    <td style="text-align:center"><font size="4"><a href="https://rehg.org/">James M. Rehg</a><sup>1</sup></td>
     <td style="text-align:center"><font size="4"><a href="https://vlg.inf.ethz.ch/people.html">Siyu Tang</a><sup>2</sup></td>
   </tr>
   <tr>
-    <td></td> 
+    <td></td>
     <td style="text-align:center"><sup>1</sup>Georgia Tech</td> 
     <td style="text-align:center"><sup>2</sup>ETH Z<sann>&#252</span>rich</td>
     <td style="text-align:center"><sup>3</sup>Zhejiang University</td>
@@ -66,8 +50,8 @@
 
 <p>
   <!-- <a href="??" style="font-size: 24px;">[code]</a> -->
-  <a href="https://github.com/2020aptx4869lm/Forecasting-Human-Object-Interaction-in-FPV" style="font-size: 24px;">[code]</a> 
-  <a href="https://arxiv.org/abs/1911.10967" style="font-size: 24px;">[arxiv]</a> 
+  <a >[code]</a> 
+  <a >[arxiv]</a> 
   
 </p>
 
@@ -79,26 +63,37 @@
 </div>
 
 <h4>
-In addition to future action label, our model also predicts the interaction hotspots on the last observable frame and hand trajectory (in the order of <span style="color: #FFFF00">yellow</span>, <span style="color: #00ff00">green</span>, <span style="color: #00b7eb">cyan</span>, and <span style="color: #FF00FF">magenta</span>) from the last observable time step to action starting point.  Visualizations of hand trajectory are forecasted to the last observable frame. (Best viewed in color)
+ We seek to reconstruct 4D second-person human body meshes that are grounded on the 3D scene captured in an egocentric view. Our method exploits 2D observations from the entire video sequence and the 3D scene context to optimize human body models over time, and thereby leads to more accurate human motion capture and more realistic human-scene interaction.
 </h4>
 
 <h2>Abstract</h2>
-We address the challenging task of anticipating human-object interaction in first person videos. Most existing methods ignore how the camera wearer interacts with the objects, or simply consider body motion as a separate modality. In contrast, we observe that the international hand movement reveals critical information about the future activity. Motivated by this, we adopt intentional hand movement as a future representation and propose a novel deep network that jointly models and predicts the egocentric hand motion, interaction hotspots and future action. Specifically, we consider the future hand motion as the motor attention, and model this attention using latent variables in our deep model. The predicted motor attention is further used to characterise the discriminative spatial-temporal visual features for predicting actions and interaction hotspots. We present extensive experiments demonstrating the benefit of the proposed joint model. Importantly, our model produces new state-of-the-art results for action anticipation on both EGTEA Gaze+ and the EPIC-Kitchens datasets.
+To understand human daily social interaction from egocentric perspective, we introduce a novel task of reconstructing a time series of second-person 3D human body meshes from monocular egocentric videos. The unique viewpoint and rapid embodied camera motion of egocentric videos raise additional technical barriers for human body capture. To address those challenges, we propose a novel optimization-based approach that leverages 2D observations of the entire video sequence and human-scene interaction constraint to estimate second-person human poses, shapes and global motion that are grounded on the 3D environment captured from the egocentric view. We conduct detailed ablation studies to validate our design choice. Moreover, we compare our method with previous state-of-the-art method on human motion capture from monocular video, and show that our method estimates more accurate human-body poses and shapes under the challenging egocentric setting. In addition, we demonstrate that our approach produces more realistic human-scene interaction.
+<br>
+
+<hr class="heavy">
+<br>
+
+</div>
+<div style="text-align: center;">
+  <img src="overview.png"  style="width:800px;height:192px;">
+</div>
+<h2>Method</h2>
+We introduce an optimization-based method that makes use of human-scene constraints and temporalhuman dynamic prior to reconstruct time series of 4D human body poses and shapes that grounded on the 3D environment.  Our methodthereby addresses challenging cases where human body is partially observable (middle figure on the left) and encourages more realistichuman-scene interaction (figure on the right).
 <br>
 
 <hr class="heavy">
 
 <div style="text-align: center;">
-<h2>Qualitative Results Video</h2>
+<h2>Video Demo</h2>
 <video controls="controls" width="640">
   <source src="Demo.mp4" type="video/mp4">
 </video>
 </div>
 <hr class="heavy">
 
-<h2 id="bibtex">Cite</h2>
+<!-- <h2 id="bibtex">Cite</h2> -->
 
-If you find this work useful in your own research, please consider citing:
+<!-- If you find this work useful in your own research, please consider citing:
 <pre>
 @inproceedings{liu2019forecasting,
   title={Forecasting human object interaction: Joint prediction of motor attention and actions in First Person Video},
@@ -106,7 +101,7 @@ If you find this work useful in your own research, please consider citing:
   booktitle={ECCV},
   year={2020}
 }
-</pre>
+</pre> -->
 
 <h2 id="Contact">Contact</h2>
 For questions about paper, please contact mliu328 at gatech dot edu
